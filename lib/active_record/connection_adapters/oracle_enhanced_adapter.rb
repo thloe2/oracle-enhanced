@@ -681,6 +681,7 @@ module ActiveRecord
         # the inclusion of these columns doesn't invalidate the DISTINCT
         #
         # It does not construct DISTINCT clause. Just return column names for distinct.
+        columns = columns.join(", ")
         order_columns = orders.reject(&:blank?).map { |s|
             s = visitor.compile(s) unless s.is_a?(String)
             # remove any ASC/DESC modifiers
